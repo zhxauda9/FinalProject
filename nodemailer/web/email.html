@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Email</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin: 5px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Send Email</h2>
+  <input type="email" id="to" placeholder="Recipient Email" required>
+  <input type="text" id="subject" placeholder="Subject" required>
+  <textarea id="message" placeholder="Your message" rows="4" required></textarea>
+  <button onclick="sendEmail()">Send</button>
+  <p id="status"></p>
+</div>
+
+<script>
+  async function sendEmail() {
+    const to = document.getElementById('to').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    const status = document.getElementById('status');
+
+    if (!to || !subject || !message) {
+      status.innerText = "All fields are required!";
+      status.style.color = "red";
+      return;
+    }
+
+    const response = await fetch('/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ to, subject, message })
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      status.innerText = "Email sent successfully!";
+      status.style.color = "green";
+    } else {
+      status.innerText = "Failed to send email.";
+      status.style.color = "red";
+    }
+  }
+</script>
+</body>
+</html>

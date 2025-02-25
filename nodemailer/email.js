@@ -1,4 +1,12 @@
+const express = require('express');
 const nodemailer = require('nodemailer');
+const cors = require('cors');
+const path = require("path");
+
+const app = express();
+app.use(express.json());
+app.use(cors());
+app.use(express.static(path.join(__dirname, 'web')));
 
 const transporter = nodemailer.createTransport({
     service: 'outlook',
@@ -8,67 +16,30 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-transporter.verify((error, success) => {
-    if (error) {
-        console.error('Error connecting to mail server:', error);
-    } else {
-        console.log('Mail server is ready to send messages');
+app.post('/send-email', async (req, res) => {
+    const { to, subject, message } = req.body;
+
+    if (!to || !subject || !message) {
+        return res.status(400).json({ success: false, error: "Missing fields" });
     }
-});
 
-const mailOptions = {
-    from: '231408@astanait.edu.kz',
-    to: 'zhalgasovaida@gmail.com',
-    subject: 'Test Email using Nodemailer',
-    text: 'Hello! This is a test email sent using Node.js and Nodemailer.'
-};
-
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        console.error('Error while sending email:', error);
-    } else {
-        console.log('Email sent successfully:', info.response);
-    }
-});
-
-async function sendEmail() {
     try {
         const info = await transporter.sendMail({
             from: '231408@astanait.edu.kz',
-            to: 'zhalgasovaida@gmail.com',
-            subject: 'Async Test Email',
-            text: 'This is an asynchronous email sent using Nodemailer!'
+            to,
+            subject,
+            text: message
         });
-        console.log('Email sent successfully:', info.response);
+        console.log('Email sent:', info.response);
+        res.json({ success: true });
     } catch (error) {
-        console.error('Error while sending email:', error);
+        console.error('Error sending email:', error);
+        res.status(500).json({ success: false, error: error.message });
     }
-}
+});
 
-sendEmail();
+app.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'web', 'email.html'));
+});
 
-async function sendEmailWithAttachment() {
-    try {
-        const info = await transporter.sendMail({
-            from: '231408@astanait.edu.kz',
-            to: 'zhalgasovaida@gmail.com',
-            subject: 'Hi',
-            text: 'Hello, how are you?',
-            attachments: [
-                {
-                    filename: 'sample.txt',
-                    content: 'This is a sample attachment'
-                }
-            ]
-        });
-        console.log('Email sent successfully:', info.response);
-    } catch (error) {
-        if (error.response) {
-            console.error('Error response from server:', error.response);
-        } else {
-            console.error('General error:', error);
-        }
-    }
-}
-
-sendEmailWithAttachment();
+app.listen(3000, () => console.log('Server running on port 3000'));

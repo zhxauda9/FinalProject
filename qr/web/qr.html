@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    input, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>QR Code Generator</h2>
+  <input type="text" id="url" placeholder="Enter URL">
+  <button onclick="generateQR()">Generate QR Code</button>
+  <p id="status"></p>
+  <img id="qrImage" src="" style="display: none;">
+</div>
+
+<script>
+  async function generateQR() {
+    const url = document.getElementById('url').value;
+    const status = document.getElementById('status');
+    const qrImage = document.getElementById('qrImage');
+
+    if (!url) {
+      status.innerText = "URL cannot be empty!";
+      status.style.color = "red";
+      return;
+    }
+
+    const response = await fetch('/generate-qr', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ url })
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      qrImage.src = result.qrUrl;
+      qrImage.style.display = "block";
+      status.innerText = "QR Code generated successfully!";
+      status.style.color = "green";
+    } else {
+      status.innerText = "Error generating QR code.";
+      status.style.color = "red";
+    }
+  }
+</script>
+
+</body>
+</html>
