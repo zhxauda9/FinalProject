@@ -2,22 +2,18 @@ import express from "express";
 import fs from "fs";
 import path from "path";
 import qr from "qr-image";
-import cors from "cors";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const app = express();
-const PORT = 3000;
 
-app.use(express.json());
-app.use(cors());
-app.use(express.static(path.join(__dirname, "qr")));
-app.use(express.static(path.join(__dirname, "web")));
 
-app.post("/generate-qr", (req, res) => {
+const router = express.Router();
+
+
+router.post("/generate-qr", (req, res) => {
     const { url } = req.body;
 
     if (!url) {
@@ -26,7 +22,7 @@ app.post("/generate-qr", (req, res) => {
 
     const qrCode = qr.image(url, { type: "png" });
     const fileName = `qr-${Date.now()}.png`;
-    const filePath = path.join(__dirname, "qr", fileName);
+    const filePath = path.join(__dirname, "public", fileName);
 
     const writeStream = fs.createWriteStream(filePath);
     qrCode.pipe(writeStream);
@@ -41,8 +37,8 @@ app.post("/generate-qr", (req, res) => {
     });
 });
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "web", "qr.html"));
+router.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "views", "qr.html"));
 });
 
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+export default router;

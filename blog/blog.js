@@ -1,10 +1,24 @@
-const express = require('express');
-const Blog = require('../models/blog');
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import mongoose from "mongoose";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 const router = express.Router();
 
+const blogSchema = new mongoose.Schema({
+    title: { type: String, required: true },
+    body: { type: String, required: true },
+    author: { type: String, default: "Anonymous" },
+}, { timestamps: true });
+
+const Blog = mongoose.model('BlogPost', blogSchema);
+
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../web', 'blog.html'));
+    res.sendFile(path.join(__dirname, 'views', 'blog.html'));
 });
 
 router.post('/blogs', async (req, res) => {
@@ -64,4 +78,4 @@ router.delete('/blogs/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default router;

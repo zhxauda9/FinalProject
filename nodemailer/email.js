@@ -1,22 +1,25 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
-const path = require("path");
+import express from 'express';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+import path from "path";
 
-const app = express();
-app.use(express.json());
-app.use(cors());
-app.use(express.static(path.join(__dirname, 'web')));
+dotenv.config();
+const router = express.Router();
+
 
 const transporter = nodemailer.createTransport({
     service: 'outlook',
     auth: {
-        user: '231408@astanait.edu.kz',
-        pass: '@Zh197173'
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
     }
 });
 
-app.post('/send-email', async (req, res) => {
+router.get('/',(req,res)=>{
+    res.sendFile(path.join(__dirname, 'web', 'email.html'));
+});
+
+router.post('/send-email', async (req, res) => {
     const { to, subject, message } = req.body;
 
     if (!to || !subject || !message) {
@@ -38,8 +41,4 @@ app.post('/send-email', async (req, res) => {
     }
 });
 
-app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'web', 'email.html'));
-});
-
-app.listen(3000, () => console.log('Server running on port 3000'));
+export default router;

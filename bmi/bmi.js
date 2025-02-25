@@ -1,19 +1,17 @@
-const express = require('express');
-const path = require('path');
-const app = express();
-const PORT = 5000;
+import express from 'express';
+import { fileURLToPath } from "url";
+import { dirname } from "path";
 
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({ extended: false }));
+const router=express.Router();
 
-app.get('/', (req, res) => {
+router.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'bmi_home.html'));
 });
 
-app.post('/calculate-bmi', (req, res) => {
+router.post('/calculate-bmi', (req, res) => {
     const weight = parseFloat(req.body.weight);
     const height = parseFloat(req.body.height);
     const age=parseFloat(req.body.age);
@@ -25,15 +23,12 @@ app.post('/calculate-bmi', (req, res) => {
     }
     let bmi = weight / ((height / 100) ** 2);
     let category;
-
     if (age > 60) {
         bmi += 1;
     }
-    
     if (gender === 'female') {
         bmi -= 1;
     }
-
     if(ethnicity=='asian'){
         if(bmi<18.5){
             category='Underweight';
@@ -72,6 +67,4 @@ app.post('/calculate-bmi', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+export default router;
