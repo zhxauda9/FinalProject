@@ -1,10 +1,16 @@
 import express from 'express';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import path from "path";
+import path, {dirname} from "path";
+import {fileURLToPath} from "url";
 
 dotenv.config();
 const router = express.Router();
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 
 const transporter = nodemailer.createTransport({
@@ -16,7 +22,7 @@ const transporter = nodemailer.createTransport({
 });
 
 router.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname, 'web', 'email.html'));
+    res.sendFile(path.join(__dirname, 'public', 'email.html'));
 });
 
 router.post('/send-email', async (req, res) => {

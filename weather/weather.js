@@ -1,8 +1,12 @@
 import express from 'express';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import path, {dirname} from "path";
+import {fileURLToPath} from "url";
 
 const router = express.Router();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;

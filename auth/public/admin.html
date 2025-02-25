@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style/admin.css">
+</head>
+<body>
+<header>
+    <h1>Your Profile</h1>
+</header>
+<section id="profile-section">
+    <div class="profile-card">
+        <h1>Hi, there are all my assignments!</h1>
+        <button class="button" onclick="navigateTo('/blog')">Blog</button><br>
+        <button class="button" onclick="navigateTo('/bmi')">BMI</button><br>
+        <button class="button" onclick="navigateTo('/auth')">Auth</button><br>
+        <button class="button" onclick="navigateTo('/mail')">Mail</button><br>
+        <button class="button" onclick="navigateTo('/qr')">QR</button><br>
+        <button class="button" onclick="navigateTo('/weather')">Weather</button><br>
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+</section>
+<script>
+    function navigateTo(route) {
+        window.location.href = route;
+    }
+
+    function logout() {
+        fetch('/auth/logout', { method: 'POST' }).then(() => {
+            window.location.href = '/auth';
+        });
+    }
+</script>
+</body>
+</html>

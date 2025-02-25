@@ -15,10 +15,10 @@ const blogSchema = new mongoose.Schema({
     author: { type: String, default: "Anonymous" },
 }, { timestamps: true });
 
-const Blog = mongoose.model('BlogPost', blogSchema);
+const Blog = mongoose.model('Blog', blogSchema);
 
 router.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'blog.html'));
+    res.sendFile(path.join(__dirname, 'public', 'blog.html'));
 });
 
 router.post('/blogs', async (req, res) => {

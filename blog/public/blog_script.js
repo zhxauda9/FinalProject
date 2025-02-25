@@ -1,4 +1,5 @@
-const API_URL = "http://localhost:3000/api/blogs";
+const API_URL = "/blog/blogs";
+
 
 async function loadBlogs() {
     const response = await fetch(API_URL);

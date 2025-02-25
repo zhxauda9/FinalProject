@@ -28,7 +28,7 @@ router.post("/generate-qr", (req, res) => {
     qrCode.pipe(writeStream);
 
     writeStream.on("finish", () => {
-        res.json({ success: true, qrUrl: `/${fileName}` });
+        res.json({ success: true, qrUrl: `/qr/public/${fileName}` });
     });
 
     writeStream.on("error", (err) => {

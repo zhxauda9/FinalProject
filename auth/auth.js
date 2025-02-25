@@ -66,7 +66,7 @@ router.post('/login', async (req, res) => {
 
             if (isMatch) {
                 req.session.user = user;
-                res.render('auth_profile', { username: user.username, email: user.username || 'example@mail.com' });
+                res.redirect('/auth/public/admin.html');
             } else {
                 res.send('Invalid credentials');
             }

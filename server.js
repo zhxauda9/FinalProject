@@ -21,6 +21,9 @@ app.use('/bmi/public', express.static(path.join(process.cwd(), 'bmi', 'public'))
 app.use('/qr/public', express.static(path.join(process.cwd(), 'qr', 'public')));
 app.use('/weather/public', express.static(path.join(process.cwd(), 'weather', 'public')));
 app.use('/auth/public', express.static(path.join(process.cwd(), 'auth', 'public')));
+app.use('/blog/public', express.static(path.join(process.cwd(), 'blog', 'public')));
+app.use('/nodemailer/public', express.static(path.join(process.cwd(), 'nodemailer', 'public')));
+
 
 app.set('view engine', 'ejs');
 app.set('views', [

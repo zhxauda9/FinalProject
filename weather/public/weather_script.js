@@ -9,7 +9,7 @@ function initMap() {
 document.getElementById('getWeatherBtn').addEventListener('click', async () => {
     const city = document.getElementById('cityInput').value;
     const country = document.getElementById('countryInput').value;
-    const response = await fetch(`/api/weather?city=${city}&country=${country}`);
+    const response = await fetch(`/weather/weather?city=${city}&country=${country}`);
     const data = await response.json();
     const iconUrl = `https://openweathermap.org/img/wn/${data.weather.icon}@2x.png`;
 
@@ -34,9 +34,9 @@ document.getElementById('getWeatherBtn').addEventListener('click', async () => {
 
     const temp = data.weather.temperature;
     if (temp < 0) {
-        document.body.style.backgroundImage = 'url(cold-weather.jpg)';
+        document.body.style.backgroundImage = 'url(/weather/public/cold-weather.jpg)';
     } else if (temp > 0) {
-        document.body.style.backgroundImage = 'url("hot-weather.jpeg")';
+        document.body.style.backgroundImage = 'url("/weather/public/hot-weather.jpeg")';
     }
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';

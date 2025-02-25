@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="weather_style.css" />
+    <link rel="stylesheet" href="/weather/public/weather_style.css" />
     <link rel="icon" type="image/png" href="icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBJbbllNxBOtkn5ih5vygmL7TU26Y2fnk&callback=initMap" async defer></script>
@@ -17,7 +17,7 @@
         }
     </style>
 </head>
-<body style="background-image: url('default.jpg');background-size: cover; height:700px;">
+<body style="background-image: url('/weather/public/default.jpg');background-size: cover; height:700px;">
 <div class="container">
     <h1>Weather API App</h1>
     <input type="text" id="cityInput" placeholder="Enter city" />
@@ -26,6 +26,6 @@
     <div id="weatherResult"></div>
     <div id="map"></div>
 </div>
-<script src="weather_script.js"></script>
+<script src="/weather/public/weather_script.js"></script>
 </body>
 </html>

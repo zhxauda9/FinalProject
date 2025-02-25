@@ -56,3 +56,20 @@ header {
 .logout-button:hover {
     background: #c0392b;
 }
+
+.button {
+    margin-top: 15px;
+    background: #9d6eff;
+    width: 250px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.button:hover {
+    background: #340c51;
+}
