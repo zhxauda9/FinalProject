@@ -1,7 +1,7 @@
 # 🌐 Final Project - WEB Technologies
 
 ![SE-2307](https://img.shields.io/badge/Group-SE--2307-blue?style=for-the-badge)  
-![Teacher](https://img.shields.io/badge/Instructor-Amirov%20Alisher-blue?style=for-the-badge)  
+![Teacher](https://img.shields.io/badge/Teacher-Amirov%20Alisher-blue?style=for-the-badge)  
 ![Student](https://img.shields.io/badge/Student-Aida%20Zhalgassova-blue?style=for-the-badge)
 
 ## 📌 Project Overview
