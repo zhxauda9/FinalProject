@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #353434, #340c51);
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
     color: #ffffff;
     margin: 0;
     padding: 0;
@@ -8,7 +8,7 @@ body {
 }
 
 header {
-    border-bottom: 1px solid #4a4a4a;
+    border-bottom: 1px solid #2d2d44;
 }
 
 #login-section {
@@ -21,49 +21,49 @@ header {
 .form-wrapper {
     max-width: 780px;
     width: 550px;
-    background: #2e2d2d;
+    background: #1f1f2e;
     border-radius: 12px;
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid #3c3c3c;
+    border: 1px solid #2b2b4a;
 }
 
 h2 {
-    color: #b483ff;
+    color: #4a90e2;
     margin-bottom: 20px;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
-    text-shadow: 2px 2px 4px #1a1a1a;
+    text-shadow: 2px 2px 4px #0a0a1a;
 }
 
 label {
     font-weight: 500;
     margin-bottom: 8px;
     display: block;
-    color: #e6e6e6;
+    color: #d6d6d6;
 }
 
 input {
-    border: 1px solid #4a4a4a;
+    border: 1px solid #2d2d44;
     padding: 12px;
     font-size: 16px;
     width: 100%;
     border-radius: 8px;
-    background-color: #222121;
+    background-color: #1a1a2e;
     color: #ffffff;
     transition: border 0.3s, background-color 0.3s;
 }
 
 input:focus {
     outline: none;
-    border-color: #b483ff;
-    background-color: #292828;
+    border-color: #4a90e2;
+    background-color: #22223e;
 }
 
 button {
-    background: cadetblue;
-    color: #222121;
+    background: #264653;
+    color: #ffffff;
     padding: 12px;
     font-size: 16px;
     font-weight: bold;
@@ -75,12 +75,12 @@ button {
 }
 
 button:hover {
-    background: #9d6eff;
+    background: #1b4965;
 }
 
 .btn-link {
     text-decoration: none;
-    color: #b483ff;
+    color: #4a90e2;
     font-weight: bold;
     text-align: center;
     display: block;

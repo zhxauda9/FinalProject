@@ -7,34 +7,50 @@
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0a192f, #0056b3);
+      text-align: center;
+      margin: 0;
+      padding: 0;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      height: 100vh;
-      background-color: #f4f4f4;
+      align-items: center;
+      min-height: 100vh;
+      color: #dbe2ef;
     }
     .container {
-      background: white;
+      width: 400px;
+      background: #16213e;
       padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
       text-align: center;
+      backdrop-filter: blur(10px);
     }
     input, button {
       width: 100%;
       margin: 10px 0;
       padding: 10px;
-      border: 1px solid #ccc;
+      border: none;
       border-radius: 5px;
+      font-size: 16px;
+    }
+    input {
+      background: rgba(255, 255, 255, 0.2);
+      color: #dbe2ef;
+      outline: none;
+      padding: 5px;
+    }
+    input::placeholder {
+      color: #a1b1c9;
     }
     button {
-      background-color: #28a745;
+      background: #3a506b;
       color: white;
       cursor: pointer;
+      transition: background 0.3s;
     }
     button:hover {
-      background-color: #218838;
+      background: #5bc0be;
     }
     img {
       margin-top: 20px;
@@ -77,7 +93,7 @@
       qrImage.src = result.qrUrl;
       qrImage.style.display = "block";
       status.innerText = "QR Code generated successfully!";
-      status.style.color = "green";
+      status.style.color = "#03b68f";
     } else {
       status.innerText = "Error generating QR code.";
       status.style.color = "red";

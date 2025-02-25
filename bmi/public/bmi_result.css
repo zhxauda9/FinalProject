@@ -1,54 +1,104 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(45deg, rgb(35, 248, 255), rgb(115, 255, 0));
+    background: linear-gradient(135deg, #091540, #1c1c3c);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    color: #dbe2ef;
 }
 
 .container {
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     text-align: center;
+    backdrop-filter: blur(8px);
 }
 
 h1 {
     margin-bottom: 20px;
-    color: #333;
+    color: #f8f9fa;
+    font-size: 2em;
 }
 
 p {
-    color: #666;
+    color: #b0c4de;
     margin-bottom: 20px;
 }
 
 a {
-    color: #007bff;
+    color: #00adb5;
     text-decoration: none;
 }
 
 a:hover {
     text-decoration: underline;
+    color: #007f8b;
 }
 
 .normal {
-    color: green;
+    color: #28a745;
 }
 
 .underweight {
-    color: orange;
+    color: #fd7e14;
 }
 
 .overweight {
-    color: yellow;
+    color: #ffc107;
 }
 
 .obese {
-    color: red;
+    color: #dc3545;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    color: #dbe2ef;
+}
+
+input[type="radio"], input[type="number"], select {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #556677;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+input:focus, select:focus {
+    border-color: #00adb5;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+button {
+    background-color: #00adb5;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #007f8b;
+    transform: scale(1.05);
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        width: 90%;
+    }
 }

@@ -1,22 +1,23 @@
-body { 
-  font-family: 'Roboto', sans-serif; 
-  background: linear-gradient(45deg, rgb(143, 39, 39), rgb(245, 235, 190));
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  height: 100vh; 
-  margin: 0; 
-  color: #333;
-} 
+body {
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #0a192f, darkslategrey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  color: #dbe2ef;
+}
 
-.container { 
-  background: #ffffff; 
-  padding: 40px 30px; 
-  border-radius: 12px; 
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-  width: 100%; 
-  max-width: 450px; 
-  text-align: center; 
+.container {
+  margin: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 60px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  backdrop-filter: blur(10px);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -24,49 +25,18 @@ body {
   transform: translateY(-10px);
 }
 
-h1 { 
-  margin-bottom: 30px; 
-  color: #333; 
+h1 {
+  margin-bottom: 20px;
+  color: #f8f9fa;
   font-size: 2em;
   font-weight: bold;
-} 
+}
 
-p { 
-  color: #777; 
-  margin-bottom: 30px; 
+p {
+  color: #b0c4de;
+  margin-bottom: 20px;
   font-size: 1.1em;
-} 
-
-a { 
-  color: #007bff; 
-  text-decoration: none; 
-  font-weight: 500;
-} 
-
-a:hover { 
-  text-decoration: underline; 
-  color: #0056b3; 
-} 
-
-.normal { 
-  color: #28a745; 
-  font-weight: bold;
-} 
-
-.underweight { 
-  color: #fd7e14; 
-  font-weight: bold;
-} 
-
-.overweight { 
-  color: #ffc107; 
-  font-weight: bold;
-} 
-
-.obese { 
-  color: #dc3545; 
-  font-weight: bold;
-} 
+}
 
 form {
   display: flex;
@@ -74,20 +44,28 @@ form {
   gap: 15px;
 }
 
+label {
+  font-size: 1em;
+  color: #dbe2ef;
+}
+
 input[type="radio"], input[type="number"], select {
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  border: 1px solid #556677;
   font-size: 1em;
-  transition: border 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: border 0.3s ease, background 0.3s ease;
 }
 
-input[type="radio"]:focus, input[type="number"]:focus, select:focus {
-  border-color: #059747;
+input:focus, select:focus {
+  border-color: #00adb5;
+  background: rgba(255, 255, 255, 0.3);
 }
 
 button {
-  background-color: #0e8b46;
+  background-color: #00adb5;
   color: white;
   padding: 12px;
   border: none;
@@ -98,7 +76,7 @@ button {
 }
 
 button:hover {
-  background-color: #037c7c;
+  background-color: #007f8b;
   transform: scale(1.05);
 }
 
@@ -108,21 +86,21 @@ button:active {
 
 @media (max-width: 600px) {
   .container {
-      padding: 20px;
-      width: 90%;
-      max-width: 100%;
+    padding: 20px;
+    width: 90%;
+    max-width: 100%;
   }
 
   h1 {
-      font-size: 1.5em;
+    font-size: 1.5em;
   }
 
   p {
-      font-size: 1em;
+    font-size: 1em;
   }
 
   button {
-      font-size: 1em;
-      padding: 10px;
+    font-size: 1em;
+    padding: 10px;
   }
 }
